@@ -62,14 +62,14 @@ useEffect(() => {
       removeProduct(shoe);
     } else {
       setCardData(updatedCardData);
-      setTotalAmount(prevTotalAmount => prevTotalAmount - shoe.price);
+      setTotalAmount(prevTotalAmount => Math.abs(prevTotalAmount - shoe.price));
     }
   };
   
   const removeProduct = (shoe) => {
     const updatedCardData = cardData.filter(item => item.id !== shoe.id);
     setCardData(updatedCardData);
-    setTotalAmount(prevTotalAmount => prevTotalAmount - (shoe.price * shoe.amount));
+    setTotalAmount(prevTotalAmount => Math.abs(prevTotalAmount - (shoe.price * shoe.amount)));
   };
   useEffect(() => {
     return () => {
